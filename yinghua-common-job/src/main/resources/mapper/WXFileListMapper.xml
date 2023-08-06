@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinghua.job.mapper.WXFileListMapper">
+
+  <resultMap type="com.yinghua.job.domain.wx.WXFileList" id="WxfilelistMap">
+    <result property="id" column="id" jdbcType="INTEGER"/>
+    <result property="filename" column="filename" jdbcType="VARCHAR"/>
+    <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    <result property="createtime" column="createtime" jdbcType="VARCHAR"/>
+    <result property="mediaId" column="media_id" jdbcType="VARCHAR"/>
+    <result property="url" column="url" jdbcType="VARCHAR"/>
+    <result property="item" column="item" jdbcType="VARCHAR"/>
+    <result property="draftId" column="draft_id" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <!--查询单个-->
+  <select id="queryById" resultMap="WxfilelistMap">
+    select
+      id, filename, remark, createtime, createname
+    from wxfilelist
+    where id = #{id}
+  </select>
+
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="WxfilelistMap">
+    select
+    id, filename, remark, createtime, createname
+    from wxfilelist
+    <where>
+      <if test="wxfilelist.id != null">
+        and id = #{wxfilelist.id}
+      </if>
+      <if test="wxfilelist.filename != null and wxfilelist.filename != ''">
+        and filename = #{wxfilelist.filename}
+      </if>
+      <if test="wxfilelist.remark != null and wxfilelist.remark != ''">
+        and remark = #{wxfilelist.remark}
+      </if>
+      <if test="wxfilelist.createtime != null">
+        and createtime = #{wxfilelist.createtime}
+      </if>
+      <if test="wxfilelist.createname != null and wxfilelist.createname != ''">
+        and createname = #{wxfilelist.createname}
+      </if>
+    </where>
+    limit #{pageable.offset}, #{pageable.pageSize}
+  </select>
+
+  <!--查询指定行数据-->
+  <select id="query" resultMap="WxfilelistMap">
+    select
+    id, filename, remark, createtime, createname, media_id, url, item ,draft_id
+    from wxfilelist
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="filename != null and filename != ''">
+        and filename = #{filename}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark}
+      </if>
+      <if test="createtime != null">
+        and createtime = #{createtime}
+      </if>
+      <if test="createname != null and createname != ''">
+        and createname = #{createname}
+      </if>
+      <if test="media_id = null">
+        and media_id is not null
+      </if>
+      <if test="draft_id = ''">
+        and draft_id is null
+      </if>
+    </where>
+  </select>
+
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from wxfilelist
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="filename != null and filename != ''">
+        and filename = #{filename}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark}
+      </if>
+      <if test="createtime != null">
+        and createtime = #{createtime}
+      </if>
+      <if test="createname != null and createname != ''">
+        and createname = #{createname}
+      </if>
+    </where>
+  </select>
+
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.yinghua.job.domain.wx.WXFileList">
+    insert into wxfilelist(filename, remark, createtime, createname)
+    values (#{filename}, #{remark}, #{createtime}, #{createname})
+  </insert>
+
+  <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into wxfilelist(filename, remark, createtime, createname)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.filename}, #{entity.remark}, #{entity.createtime}, #{entity.createname})
+    </foreach>
+  </insert>
+
+  <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+    insert into wxfilelist(filename, remark, createtime, createname)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.filename}, #{entity.remark}, #{entity.createtime}, #{entity.createname})
+    </foreach>
+    on duplicate key update
+    filename = values(filename),
+    remark = values(remark),
+    createtime = values(createtime),
+    createname = values(createname)
+  </insert>
+
+  <!--通过主键修改数据-->
+  <update id="update">
+    update wxfilelist
+    <set>
+      <if test="filename != null and filename != ''">
+        filename = #{filename},
+      </if>
+      <if test="remark != null and remark != ''">
+        remark = #{remark},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime},
+      </if>
+      <if test="createname != null and createname != ''">
+        createname = #{createname},
+      </if>
+      <if test="mediaId != null and mediaId != ''">
+        media_id = #{mediaId},
+      </if>
+      <if test="url != null and url != ''">
+        url = #{url},
+      </if>
+      <if test="item != null and item != ''">
+        item = #{item},
+      </if>
+      <if test="draftId != null and draftId != ''">
+        draft_id = #{draftId},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <!--通过主键删除-->
+  <delete id="deleteById">
+    delete from wxfilelist where id = #{id}
+  </delete>
+
+</mapper>

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: yinghua-common-job
+  profiles:
+    # 环境配置
+    active: dev

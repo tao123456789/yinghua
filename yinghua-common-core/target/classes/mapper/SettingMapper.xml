@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--上面2行的是约束依赖，固定照抄就好-->
+<!--下面的才是要自己编写的地方-->
+<!--写mapper的配置文件第一步就是要写<mapper></mapper>标签-->
+<!--<mapper></mapper>标签里包含着各个CURD操作的SQL语句-->
+<mapper namespace="com.yinghua.core.mapper.SettingMapper">
+    <!--定义一个基础返回类型-->
+    <resultMap id="BaseResultMap" type="com.yinghua.core.domain.bo.SettingBO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+    </resultMap>
+
+    <select id="getSetting" resultMap="BaseResultMap" parameterType="com.yinghua.core.domain.bo.SettingBO">
+        select * from setting where 1=1
+        <if test='name!=null'>
+            and name=#{name}
+        </if>
+        <if test='type!=0'>
+            and type=#{type}
+        </if>
+        <if test='code!=null'>
+            and code=#{code}
+        </if>
+    </select>
+
+    <update id="updateSettingByName" parameterType="com.yinghua.core.domain.bo.SettingBO">
+        update setting
+        <set>
+            <if test='type!=null' >
+                type=#{type},
+            </if>
+            <if test='code!=null' >
+                code=#{code}
+            </if>
+        </set>
+        where name = #{name}
+    </update>
+</mapper>

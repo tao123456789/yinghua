@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--上面2行的是约束依赖，固定照抄就好-->
+<!--下面的才是要自己编写的地方-->
+<!--写mapper的配置文件第一步就是要写<mapper></mapper>标签-->
+<!--<mapper></mapper>标签里包含着各个CURD操作的SQL语句-->
+<mapper namespace="com.yinghua.core.mapper.ModuleMapper">
+    <!--定义一个基础返回类型-->
+    <resultMap id="BaseResultMap" type="com.yinghua.core.domain.vo.UserModuleVO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userid" jdbcType="INTEGER" property="userid" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="realname" jdbcType="VARCHAR" property="realname" />
+        <result column="moduleid" jdbcType="INTEGER" property="moduleid" />
+        <result column="module_name" jdbcType="VARCHAR" property="module_name" />
+        <result column="module_url" jdbcType="VARCHAR" property="module_url" />
+        <result column="img_url" jdbcType="VARCHAR" property="img_url" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+    </resultMap>
+
+    <resultMap id="BaseResultMap2" type="com.yinghua.core.domain.bo.ModuleBO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="module_name" jdbcType="VARCHAR" property="module_name" />
+        <result column="module_url" jdbcType="VARCHAR" property="module_url" />
+        <result column="img_url" jdbcType="VARCHAR" property="img_url" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+    </resultMap>
+
+    <select id="getUserModuleByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select um.id,um.userid,u.username,u.realname,um.moduleid,m.module_name,m.module_url,m.img_url,m.description from user_module um
+        left join module m on m.id=um.moduleid
+        left join user u on u.id=um.userid
+        where um.userid=#{userid,jdbcType=INTEGER}
+        order by m.id,m.module_name
+    </select>
+
+    <select id="getAllModuleList" resultMap="BaseResultMap2">
+        select * from module order by id
+    </select>
+
+    <insert id="insertUserModule">
+        insert into user_module(userid,moduleid) values(#{userid},#{moduleid})
+    </insert>
+
+    <delete id="removeModuleByID" parameterType="java.lang.Integer">
+        delete from user_module where id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="yinghua-system-config" />
+        <module name="yinghua-common-job" />
+        <module name="yinghua-common-core" />
+        <module name="yinghua-auth" />
+        <module name="yinghua-common-eureka" />
+        <module name="yinghua-business" />
+        <module name="yinghua-common-mq" />
+        <module name="yinghua-common-security" />
+        <module name="yinghua-gateway" />
+        <module name="yinghua-common" />
+        <module name="yinghua-common-redis" />
+        <module name="yinghua-common-datasource" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="yinghua-common-jobs" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

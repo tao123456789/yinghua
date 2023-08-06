@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: yinghua-business
+  profiles:
+    active: dev

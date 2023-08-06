@@ -1,0 +1,56 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: yinghua-common-redis
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    # 环境配置
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 127.0.0.1:8848
+        # 命名空间-dev
+        namespace: 9c4541f6-60b5-41c9-a3fe-239a18527df8
+      config:
+        # 配置中心地址
+        server-addr: 127.0.0.1:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+    sentinel:
+      # 取消控制台懒加载
+      eager: true
+      transport:
+        # 控制台地址
+        dashboard: 127.0.0.1:8718
+      # nacos配置持久化
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: sentinel-yinghua-redis
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: gw-flow
+  #redis配置
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 60
+    jedis:
+      pool:
+        #最大空闲时间，数据库连接的最大空闲时间。超过空闲时间，数据库连接将被标记为不可用，然后被释放。设为0表示无限制。
+        max-idle: 300
+        #连接池的最大数据库连接数。设为0表示无限制
+        max-active: 600
+        #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        max-wait: 1000
+        #default.db: 0
+        #password: 123456

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: yinghua-common
+  profiles:
+    active: dev

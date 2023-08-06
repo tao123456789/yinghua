@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--上面2行的是约束依赖，固定照抄就好-->
+<!--下面的才是要自己编写的地方-->
+<!--写mapper的配置文件第一步就是要写<mapper></mapper>标签-->
+<!--<mapper></mapper>标签里包含着各个CURD操作的SQL语句-->
+
+<mapper namespace="com.yinghua.core.mapper.UserMapper">
+    <!--定义一个名为BaseResultMap的返回类型-->
+    <resultMap id="BaseResultMap" type="com.yinghua.core.domain.bo.UserBO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="userPasswd" />
+        <result column="realname" jdbcType="VARCHAR" property="realName" />
+        <result column="qqmail" jdbcType="VARCHAR" property="qqmail" />
+        <result column="tel" jdbcType="VARCHAR" property="tel" />
+        <result column="ip" jdbcType="VARCHAR" property="ip" />
+        <result column="area" jdbcType="VARCHAR" property="area" />
+        <result column="brower" jdbcType="VARCHAR" property="brower" />
+        <result column="os" jdbcType="VARCHAR" property="os" />
+        <result column="logintime" jdbcType="VARCHAR" property="logintime" />
+    </resultMap>
+
+<!--    根据name查询某一个用户的信息-->
+    <select id="GetUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from user where username = #{username}
+    </select>
+
+    <!--    根据id查询某一个用户的信息-->
+    <select id="GetUserByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id,username,tel,qqmail,realname,ip,area,brower,os,logintime,inviteAuth,beinviteauth from user where id = #{userid}
+    </select>
+
+<!--    查询所有的用户信息-->
+    <select id="GetAllUser" resultMap="BaseResultMap" parameterType="com.yinghua.core.domain.bo.UserBO">
+        select id,username,realname,qqmail,tel,ip,area,brower,os,logintime,inviteAuth,beinviteauth from user where 1=1
+        <if test="userName!=null" >
+            and username=#{userName}
+        </if>
+        <if test="userPasswd!=null">
+            and password=#{userPasswd}
+        </if>
+        <if test="realName!=null">
+            and realname=#{realName}
+        </if>
+        <if test="area!=null">
+            and area=#{area}
+        </if>
+        <if test="inviteAuth!=null">
+            and inviteauth=#{inviteAuth}
+        </if>
+    </select>
+
+    <!--删除语句-->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id =#{userid,jdbcType=INTEGER}
+    </delete>
+
+    <!--新增语句-->
+    <insert id="insertUser" parameterType="com.yinghua.core.domain.bo.UserBO">
+        insert into user(username,password,realname,ip,area,brower,os,logintime,inviteAuth,beinviteauth) values(#{userName},#{userPasswd},#{realName},#{ip},#{area},#{brower},#{os},#{logintime},#{inviteAuth},#{beinviteauth})
+    </insert>
+
+    <!--修改语句-->
+    <update id="updateUser" parameterType="com.yinghua.core.domain.bo.UserBO">
+        update user
+        <set>
+        <if test='area!=null' >
+            area=#{area,jdbcType=VARCHAR},
+        </if>
+        <if test="ip!=null">
+            ip=#{ip,jdbcType=VARCHAR},
+        </if>
+        <if test="brower!=null">
+            brower=#{brower,jdbcType=VARCHAR},
+        </if>
+        <if test="os!=null">
+            os=#{os,jdbcType=VARCHAR},
+        </if>
+        <if test="logintime!=null">
+            logintime=#{logintime}
+        </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--用户编辑语句-->
+    <update id="updateUserInfo" parameterType="com.yinghua.core.domain.bo.UserBO">
+        update user
+        <set>
+            <if test='realName!=null' >
+                realName=#{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPasswd!=null">
+                password=#{userPasswd,jdbcType=VARCHAR},
+            </if>
+            <if test="qqmail!=null">
+                qqmail=#{qqmail,jdbcType=VARCHAR},
+            </if>
+            <if test="tel!=null">
+                tel=#{tel,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+<!--    token服务-->
+    <select id="checkToken" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select ifuse from token where token=#{token}
+    </select>
+
+    <insert id="insertToken" parameterType="java.lang.String">
+        insert into token (token) values (#{token})
+    </insert>
+
+</mapper>

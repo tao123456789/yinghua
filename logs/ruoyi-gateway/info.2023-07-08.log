@@ -1,0 +1,48 @@
+18:33:22.410 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.5.Final
+18:33:24.425 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,80] - [RpcClientFactory] create a new rpc client of 65242a65-2e74-4084-bdac-4af587b9fa7d_config-0
+18:33:24.478 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 33 ms to scan 1 urls, producing 3 keys and 6 values 
+18:33:24.513 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 17 ms to scan 1 urls, producing 4 keys and 9 values 
+18:33:24.532 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 16 ms to scan 1 urls, producing 3 keys and 10 values 
+18:33:24.693 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 158 ms to scan 112 urls, producing 0 keys and 0 values 
+18:33:24.713 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 19 ms to scan 1 urls, producing 1 keys and 5 values 
+18:33:24.728 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 13 ms to scan 1 urls, producing 1 keys and 7 values 
+18:33:24.744 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 14 ms to scan 1 urls, producing 2 keys and 8 values 
+18:33:24.871 [main] INFO  o.r.Reflections - [scan,232] - Reflections took 125 ms to scan 112 urls, producing 0 keys and 0 values 
+18:33:24.872 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] RpcClient init label, labels = {module=config, Vipserver-Tag=null, source=sdk, Amory-Tag=null, Location-Tag=null, taskId=0, AppName=unknown}
+18:33:24.872 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$333/1831141281
+18:33:24.873 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Register server push request handler:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$$Lambda$334/1705277839
+18:33:24.873 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Registry connection listener to current client:com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$1
+18:33:24.874 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] RpcClient init, ServerListFactory = com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient$2
+18:33:24.882 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Try to connect to server on start up, server: {serverIp = '127.0.0.1', server main port = 8848}
+18:33:28.275 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Success to connect to server [127.0.0.1:8848] on start up, connectionId = 1688812407994_127.0.0.1_13519
+18:33:28.276 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Notify connected event to listeners.
+18:33:28.277 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+18:33:28.279 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [65242a65-2e74-4084-bdac-4af587b9fa7d_config-0] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$343/667680223
+18:33:28.390 [main] INFO  c.y.g.YingHuaGateWayApplication - [logStartupProfileInfo,637] - The following 1 profile is active: "dev"
+18:33:29.315 [main] INFO  o.a.c.c.AprLifecycleListener - [log,173] - An older version [1.2.14] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+18:33:29.316 [main] INFO  o.a.c.c.AprLifecycleListener - [log,173] - Loaded Apache Tomcat Native library [1.2.14] using APR version [1.6.2].
+18:33:29.316 [main] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+18:33:29.317 [main] INFO  o.a.c.c.AprLifecycleListener - [log,173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+18:33:30.376 [main] INFO  o.a.c.c.AprLifecycleListener - [log,173] - OpenSSL successfully initialized [OpenSSL 1.0.2l  25 May 2017]
+18:33:30.384 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8080"]
+18:33:30.385 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+18:33:30.385 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.70]
+18:33:30.538 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+18:33:33.745 [main] INFO  c.a.n.c.r.client - [lambda$createClient$0,80] - [RpcClientFactory] create a new rpc client of ff9b0714-8466-4d5c-9c00-a71665cf3a00
+18:33:33.745 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] RpcClient init label, labels = {module=naming, source=sdk}
+18:33:33.746 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] RpcClient init, ServerListFactory = com.alibaba.nacos.client.naming.core.ServerListManager
+18:33:33.747 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Registry connection listener to current client:com.alibaba.nacos.client.naming.remote.gprc.redo.NamingGrpcRedoService
+18:33:33.747 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Register server push request handler:com.alibaba.nacos.client.naming.remote.gprc.NamingPushRequestHandler
+18:33:33.747 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Try to connect to server on start up, server: {serverIp = '127.0.0.1', server main port = 8848}
+18:33:33.872 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Success to connect to server [127.0.0.1:8848] on start up, connectionId = 1688812413753_127.0.0.1_13521
+18:33:33.872 [com.alibaba.nacos.client.remote.worker] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Notify connected event to listeners.
+18:33:33.872 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$ConnectResetRequestHandler
+18:33:33.873 [main] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Register server push request handler:com.alibaba.nacos.common.remote.client.RpcClient$$Lambda$343/667680223
+18:33:33.923 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8080"]
+18:33:33.943 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP yinghua-gateway 2.0.0.121:8080 register finished
+18:33:34.422 [nacos-grpc-client-executor-5] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Receive server push request, request = NotifySubscriberRequest, requestId = 3
+18:33:34.430 [nacos-grpc-client-executor-5] INFO  c.a.n.c.r.client - [printIfInfoEnabled,60] - [ff9b0714-8466-4d5c-9c00-a71665cf3a00] Ack server push request, request = NotifySubscriberRequest, requestId = 3
+18:33:35.012 [main] INFO  c.y.g.YingHuaGateWayApplication - [logStarted,61] - Started YingHuaGateWayApplication in 15.977 seconds (JVM running for 19.049)
+18:33:35.017 [main] INFO  c.a.c.n.r.NacosContextRefresher - [registerNacosListener,129] - [Nacos Config] Listening config: dataId=yinghua-gateway.yml, group=DEFAULT_GROUP
+18:33:35.018 [main] INFO  c.a.c.n.r.NacosContextRefresher - [registerNacosListener,129] - [Nacos Config] Listening config: dataId=yinghua-gateway-dev.yml, group=DEFAULT_GROUP
+18:33:35.019 [main] INFO  c.a.c.n.r.NacosContextRefresher - [registerNacosListener,129] - [Nacos Config] Listening config: dataId=yinghua-gateway, group=DEFAULT_GROUP
