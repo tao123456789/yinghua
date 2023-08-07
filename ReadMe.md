@@ -5,8 +5,16 @@
 - 执行SQL，进行nacos的数据持久化（启动命令包含有，可以自己执行）
 
 2，redis服务
+YingHuaRedisApplication
+host: localhost
+port: 6379
 
 3，rabbitmq服务
+YingHuaCommonMqApplication
+port: 5672
+host: localhost
+username: guest
+password: guest
 
 4，mysql服务
 
