@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class YingHuaCommonMq {
+public class YingHuaCommonMqApplication {
     public static void main (String[] args) {
-        SpringApplication.run(YingHuaCommonMq.class,args);
+        SpringApplication.run(YingHuaCommonMqApplication.class,args);
     }
 }
