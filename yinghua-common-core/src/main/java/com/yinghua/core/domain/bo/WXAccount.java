@@ -13,6 +13,8 @@ public class WXAccount {
 
     private Integer status;
 
+    private String remarks;
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +61,13 @@ public class WXAccount {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getRemarks () {
+        return remarks;
+    }
+
+    public void setRemarks (String remarks) {
+        this.remarks = remarks;
     }
 }

@@ -8,6 +8,7 @@
     <result column="method" jdbcType="VARCHAR" property="method" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
   <sql id="Base_Column_List">
     id, appid, secret, method, type, status
