@@ -45,7 +45,7 @@ public class LoginApi {
         UserBO userBean = new UserBO();
         System.out.println(userBO.toString());
         userBean = commonCoreFeignService.GetUserByUserName(userBO.getUserName());
-        System.out.println("获取当前用户信息："+userBean);
+        System.out.println("获取当前用户信息："+userBean.getId());
         //验证登录，获取token
         if(userBean.getUserPasswd().equals(userBO.getUserPasswd())){
             userBO.setId(userBean.getId());

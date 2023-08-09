@@ -7,16 +7,13 @@ import com.yinghua.core.mapper.ModuleMapper;
 import com.yinghua.core.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/core/user")
+@RequestMapping("/common/core/user")
 public class UserApi{
     @Resource
     UserMapper userMapper;
@@ -26,7 +23,7 @@ public class UserApi{
 //    UserUtil userUtil;
 
     @PostMapping("/getAllUser")
-    public List<UserBO> GetAllUser(UserBO userBO){
+    public List<UserBO> GetAllUser(@RequestBody UserBO userBO){
         return userMapper.GetAllUser(userBO);
     }
 
@@ -35,8 +32,8 @@ public class UserApi{
         return userMapper.GetUserByUserId(userid);
     }
 
-    @GetMapping("/getUserByUserName")
-    public UserBO GetUserByUserName(String username) {
+    @PostMapping("/getUserByUserName")
+    public UserBO GetUserByUserName(@RequestBody String username) {
         System.out.println("获取用户信息："+userMapper.GetUserByUserName(username).toString());
         return userMapper.GetUserByUserName(username);
     }
@@ -45,28 +42,28 @@ public class UserApi{
     }
 
     @PostMapping("/updateUser")
-    public int updateUser(UserBO user){
+    public int updateUser(@RequestBody UserBO user){
         System.out.println(user.toString());
         return userMapper.updateUser(user);
     }
     @PostMapping("/updateUserInfo")
-    public int updateUserInfo(UserBO user){
+    public int updateUserInfo(@RequestBody UserBO user){
         return userMapper.updateUserInfo(user);
     }
 
     @PostMapping("/insertUser")
-    public int insertUser(UserBO user){
+    public int insertUser(@RequestBody UserBO user){
         return userMapper.insertUser(user);
     }
 
     @PostMapping("/getUserModuleByUserId")
-    public List<UserModuleVO> getUserModuleByUserId(int userid) {
+    public List<UserModuleVO> getUserModuleByUserId(@RequestBody int userid) {
         System.out.println(userid+"获取用户模块数据");
         return moduleMapper.getUserModuleByUserId(userid);
     }
 
     @PostMapping("/removeModuleByID")
-    public Boolean removeModuleByID (int id) {
+    public Boolean removeModuleByID (@RequestBody int id) {
         return moduleMapper.removeModuleByID(id);
     }
 

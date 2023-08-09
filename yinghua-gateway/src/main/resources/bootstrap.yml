@@ -51,8 +51,7 @@ spring:
           lower-case-service-id: true
       #设置路由：路由id、路由到微服务的uri、断言
       routes:
-        #common模块的路由
         - id: yinghua-auth   #路由ID，全局唯一，建议配置服务名
           uri: lb://yinghua-auth  #lb 整合负载均衡器ribbon,loadbalancer
           predicates:
-            - Path=/yinghua-auth/**   # 断言，路径相匹配的进行路由
+            - Path=/**   # 断言，路径相匹配的进行路由

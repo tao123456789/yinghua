@@ -26,24 +26,25 @@ public class AuthorizeFilter implements GlobalFilter {
         System.out.println("请求方式："+request.getMethod());
         System.out.println();
         // 3.校验
-        if (request.getPath().toString().equals("/login") | request.getPath().toString().equals("/register")) {
+        if (request.getPath().toString().equals("/yinghua-auth/login") | request.getPath().toString().equals("/register")) {
             // 放行
             System.out.println("login接口，已放行！！！");
             System.out.println("-------------------------------------------------------");
             return chain.filter(exchange);
-        }
-        if(auth.isEmpty()){
-            // 4.拦截
-            System.out.println("tken为空，已拦截！！！");
-            System.out.println("-------------------------------------------------------");
-            // 4.1.禁止访问，设置状态码
-            exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
         }else{
-            // 放行
-            System.out.println("Authorization："+auth);
-            System.out.println("已放行！！！");
-            System.out.println("-------------------------------------------------------");
-            return chain.filter(exchange);
+            if(auth.isEmpty()){
+                // 4.拦截
+                System.out.println("token为空，已拦截！！！");
+                System.out.println("-------------------------------------------------------");
+                // 4.1.禁止访问，设置状态码
+                exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+            }else{
+                // 放行
+                System.out.println("Authorization："+auth);
+                System.out.println("已放行！！！");
+                System.out.println("-------------------------------------------------------");
+                return chain.filter(exchange);
+            }
         }
         // 4.2.结束处理
         return exchange.getResponse().setComplete();
