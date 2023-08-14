@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: yinghua-common-core
+    name: yinghua-core
   profiles:
     # 环境配置
     active: dev
@@ -33,7 +33,7 @@ spring:
         ds1:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: yinghua-common-core
+            dataId: yinghua-core
             groupId: DEFAULT_GROUP
             data-type: json
             rule-type: gw-flow

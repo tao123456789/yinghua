@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserModuleVO> getUserModuleByUserId (int userid) {
-        return null;
+        return commonCoreFeignService.getUserModuleByUserId(userid);
     }
 
     @Override

@@ -265,7 +265,7 @@ public class WXService {
         wxfilelist.setCreatetime(dateUtils.getNowFormat1());
         wxfilelist.setRemark("Y");
         List<WXFileList> wxfilelistPage=wxFileListService.query(wxfilelist);
-        System.out.println("获取到今日壁纸："+wxfilelistPage);
+        System.out.println("获取到今日壁纸："+wxfilelistPage.size());
 
         for(WXFileList wxfilelist1:wxfilelistPage){
             if(wxfilelist1.getUrl()!="") {

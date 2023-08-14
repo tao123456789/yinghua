@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "yinghua-common-core")
+@FeignClient(name = "yinghua-core")
 public interface CommonCoreFeignService {
 
     @PostMapping("/common/setting/getSetting")

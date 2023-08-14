@@ -5,8 +5,8 @@ import com.yinghua.core.domain.bo.UserBO;
 import com.yinghua.core.domain.vo.UserModuleVO;
 import com.yinghua.core.mapper.ModuleMapper;
 import com.yinghua.core.mapper.UserMapper;
+import com.yinghua.core.utils.userUtil.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,8 +19,8 @@ public class UserApi{
     UserMapper userMapper;
     @Resource
     ModuleMapper moduleMapper;
-//    @Resource
-//    UserUtil userUtil;
+    @Resource
+    UserUtil userUtil;
 
     @PostMapping("/getAllUser")
     public List<UserBO> GetAllUser(@RequestBody UserBO userBO){
@@ -62,6 +62,14 @@ public class UserApi{
         return moduleMapper.getUserModuleByUserId(userid);
     }
 
+    @GetMapping("/getModule")
+    public List<UserModuleVO> GetModule() {
+        System.out.println("获取当前用户模块数据");
+        int userid=userUtil.getCurrentUserInfo().getId();
+        //获取用户模块权限
+        return moduleMapper.getUserModuleByUserId(userid);
+    }
+
     @PostMapping("/removeModuleByID")
     public Boolean removeModuleByID (@RequestBody int id) {
         return moduleMapper.removeModuleByID(id);
@@ -77,8 +85,8 @@ public class UserApi{
         return moduleMapper.insertUserModule(userModuleVO.getUserid(),userModuleVO.getModuleid());
     }
 
-//    @GetMapping("/getCurrentUserInfo")
-//    public UserBO getCurrentUserInfo () {
-//        return userUtil.getCurrentUserInfo();
-//    }
+    @GetMapping("/getCurrentUserInfo")
+    public UserBO getCurrentUserInfo () {
+        return userUtil.getCurrentUserInfo();
+    }
 }
